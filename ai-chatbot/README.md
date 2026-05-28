@@ -1,16 +1,36 @@
-# React + Vite
+# AI Assistant Chatbot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A conversational AI chatbot that lets you have multi-turn conversations 
+with Google Gemini. Built with React on the frontend and Node.js/Express 
+on the backend.
 
-Currently, two official plugins are available:
+## What it does
+- Remembers previous messages in the conversation
+- Shows a typing indicator while AI is thinking
+- Handles errors gracefully
+- Mobile responsive UI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+Frontend — React.js, CSS
+Backend — Node.js, Express.js
+AI Model — Google Gemini 2.0 Flash
+Deployment — Vercel + Render
 
-## React Compiler
+## How to run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Backend
+cd backend
+npm install
+add your GEMINI_API_KEY in .env file
+node index.js
 
-## Expanding the ESLint configuration
+### Frontend
+cd ai-chatbot
+npm install
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Why I built this
+Wanted to understand how to integrate a real AI API into a 
+full-stack application and handle multi-turn conversations 
+with context retention.
+
