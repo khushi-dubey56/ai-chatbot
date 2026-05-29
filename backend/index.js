@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import Groq from 'groq-sdk'
 
 dotenv.config()
 
@@ -9,8 +9,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
 const chatHistory = []
 
@@ -19,16 +18,19 @@ app.post('/api/chat', async (req, res) => {
 
   chatHistory.push({
     role: 'user',
-    parts: [{ text: message }]
+    content: message
   })
 
-  const chat = model.startChat({ history: chatHistory })
-  const result = await chat.sendMessage(message)
-  const reply = result.response.text()
+  const completion = await groq.chat.completions.create({
+    messages: chatHistory,
+    model: 'llama-3.3-70b-versatile',
+  })
+
+  const reply = completion.choices[0].message.content
 
   chatHistory.push({
-    role: 'model',
-    parts: [{ text: reply }]
+    role: 'assistant',
+    content: reply
   })
 
   res.json({ reply })
@@ -37,3 +39,4 @@ app.post('/api/chat', async (req, res) => {
 app.listen(5000, () => {
   console.log('Backend running on port 5000')
 })
+
