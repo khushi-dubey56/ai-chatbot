@@ -13,7 +13,7 @@ on the backend.
 ## Tech Stack
 Frontend — React.js, CSS
 Backend — Node.js, Express.js
-AI Model — Google Gemini 2.0 Flash
+AI Model — Groq API 2(LLaMA 3.3 70B)
 Deployment — Vercel + Render
 
 ## How to run locally
