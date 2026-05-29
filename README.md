@@ -1,4 +1,6 @@
 # AI Assistant Chatbot
+//live demo 
+https://ai-chatbot-olive-nu.vercel.app/
 
 A conversational AI chatbot that lets you have multi-turn conversations 
 with Google Gemini. Built with React on the frontend and Node.js/Express 
